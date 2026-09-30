@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="flex min-h-screen">
+        <aside class="w-64 bg-gray-800 text-white p-6 ">
+            <h1 class="text-2x1 font-bold mb-8">Dashboard</h1>
+            <nav>
+                <a href="#" class="block p-3 bg-gray-700">Matiere</a>
+            </nav>
+        </aside>
+        <main class="flex-1 p-8">
+            <div class="flex justify-between mb-8">
+                <h2 class="text-2x1 font-bold mb-8">Gestion Des Matiere</h2>
+                <button id="btnAjouter" class="bg-blue-600 text-white px-5 py-3">+ Ajouter Matiere</button>
+            </div>
+            <div class="p-6 bg-white mb-4 hidden" id="sectionForm">
+                <form id="form">
+                    <label class="block mb-2">Nom de Matiere</label>
+                    <input type="text" class="w-full border p-3 mb-4" id="nom_matiere"  name="nom_matiere">
+                    <label class="block mb-2">Description de Matiere</label>
+                    <input type="text" class="w-full border p-3 mb-4" id="description"  name="description">
+                    <button class="bg-blue-600 text-white px-5 py-3">Ajouter</button>
+                    <button class="bg-gray-500 text-white px-5 py-3" id="annulerBtn" type="button">Annuler</button>
+                </form>
+            </div>
+            <div>
+                <table class="w-full">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th class="p-4 text-left">ID</th>
+                            <th class="p-4 text-left">Nom</th>
+                            <th class="p-4 text-left">Description Matiere</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bodyTable">
+
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+<script src="main.js"></script>
+</html>
