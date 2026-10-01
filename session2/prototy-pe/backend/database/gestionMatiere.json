@@ -1,47 +1,13 @@
 [
+
     {
-        "id_genre": 1,
-        "nom_genre": "Action",
-        "description_genre": "Films d'action"
+        "id_matiere": 3,
+        "nom_matiere": "Test",
+        "description": "dddddddddddddddddddddddddddddd"
     },
     {
-        "id_genre": 2,
-        "nom_genre": "genreTest",
-        "description_genre": "tessssst"
-    },
-    {
-        "id_genre": 3,
-        "nom_genre": "genreTest",
-        "description_genre": "dddddddddddddddddddddddddddddd"
-    },
-    {
-        "id_genre": 4,
-        "nom_genre": "genreTest",
-        "description_genre": "zzzzzzzzzzzzzzzzzzzzzzzzzz"
-    },
-    {
-        "id_genre": 5,
-        "nom_genre": "genreTest",
-        "description_genre": "yyyyyyyyyyyyyyyyyyyyyyyyyyy"
-    },
-    {
-        "id_genre": 6,
-        "nom_genre": "",
-        "description_genre": ""
-    },
-    {
-        "id_genre": 7,
-        "nom_genre": "",
-        "description_genre": ""
-    },
-    {
-        "id_genre": 8,
-        "nom_genre": "",
-        "description_genre": ""
-    },
-    {
-        "id_genre": 9,
-        "nom_genre": "",
-        "description_genre": ""
+        "id_matiere": 4,
+        "nom_matiere": "php",
+        "description": "php c'est un logadoizopuio"
     }
 ]

@@ -1,23 +1,32 @@
 const bodyTable=document.getElementById("bodyTable")
-const api="/backend/api/GestionMatiere.php"
+const api="http://localhost:8000/backend/api/GestionMatiere.php"
 const nom_matiere =document.getElementById("nom_matiere")
 const description=document.getElementById("description")
 const sectionForm=document.getElementById("sectionForm")
 const btnAjouter=document.getElementById("btnAjouter")
 const btnAnnuler=document.getElementById("annulerBtn")
-function afficherMatiere(){
-    fetch(api).then(response=>response.json())
-    .then(data=>{
-        data.forEach(element => {
-            bodyTable.insertAdjacentHTML("beforeEnd",`
-        <tr>
-            <td>${element.id_matiere}</td>
-            <td>${element.nom_matiere}</td>
-            <td>${element.description}</td>
-        </tr>
-        `)
-        });
-    }).catch(error=>console.error(error))
+function afficherMatiere() {
+    fetch(api)
+        .then(response => {
+            console.log("Status :", response.status);
+            return response.json();
+        })
+        .then(data => {
+            console.log("Data reçue :", data);
+
+            bodyTable.innerHTML = "";
+
+            data.forEach(element => {
+                bodyTable.insertAdjacentHTML("beforeend", `
+                    <tr>
+                        <td>${element.id_matiere}</td>
+                        <td>${element.nom_matiere}</td>
+                        <td>${element.description}</td>
+                    </tr>
+                `);
+            });
+        })
+        .catch(error => console.error("Erreur :", error));
 }
 
 
