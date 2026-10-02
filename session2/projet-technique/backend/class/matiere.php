@@ -1,5 +1,5 @@
     <?php
-    class matiere {
+    class Matiere {
         private int $id_matiere;
         private string $nom_matiere;
         private string $description;

@@ -1,0 +1,28 @@
+usecase-beta
+
+direction LR
+
+actor Administrateur("Administrateur")
+actor Formateur("Formateur")
+actor Visiteur("Visiteur")
+
+
+Administrateur --> "ajouter un cours"
+Administrateur --> "modifier un cours"
+Administrateur --> "supprimer un cours"
+
+Administrateur --> "consulter les formateurs"
+Administrateur --> "ajouter un formateur"
+Administrateur --> "modifier un formateur"
+Administrateur --> "supprimer un formateur"
+
+Administrateur --> "ajouter une matière"
+Administrateur --> "modifier une matière"
+Administrateur --> "supprimer une matière"
+
+Formateur --> "ajouter un cours"
+Formateur --> "modifier son cours"
+Formateur --> "supprimer son cours"
+
+Visiteur --> "consulter les cours"
+Visiteur --> "consulter les matières"

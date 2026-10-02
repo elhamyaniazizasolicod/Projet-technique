@@ -1,0 +1,11 @@
+usecase-beta
+direction LR
+actor Admin("Admin")
+actor Formateur("Formateur")
+actor visiteur("visiteur")
+
+  system [ "Platforme des cours"]
+
+Admin -- Gère les formateurs et le contenu -- system
+Formateur -- Crée et gère ses cours -- system
+visiteur -- Consulte les séances publiées -- system

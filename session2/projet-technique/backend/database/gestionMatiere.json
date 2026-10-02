@@ -1,0 +1,13 @@
+[
+
+    {
+        "id_matiere": 3,
+        "nom_matiere": "Test",
+        "description": "dddddddddddddddddddddddddddddd"
+    },
+    {
+        "id_matiere": 4,
+        "nom_matiere": "php",
+        "description": "php c'est un logadoizopuio"
+    }
+]

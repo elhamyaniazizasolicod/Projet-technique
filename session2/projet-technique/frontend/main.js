@@ -11,7 +11,7 @@ function afficherMatiere() {
             console.log("Status :", response.status);
             return response.json();
         })
-        .then(data => {
+        .then(data => { 
             console.log("Data reçue :", data);
 
             bodyTable.innerHTML = "";
@@ -28,8 +28,6 @@ function afficherMatiere() {
         })
         .catch(error => console.error("Erreur :", error));
 }
-
-
 
 function ajouterMatiere(){
     fetch(api,{
