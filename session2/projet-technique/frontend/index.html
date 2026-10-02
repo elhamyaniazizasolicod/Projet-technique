@@ -1,50 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Gestion des Matières</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-100 font-sans">
     <div class="flex min-h-screen">
-        <aside class="w-64 bg-gray-800 text-white p-6 ">
-            <h1 class="text-2x1 font-bold mb-8">Dashboard</h1>
+        <!-- Barre latérale -->
+        <aside class="w-64 bg-gray-800 text-white p-6">
+            <h1 class="text-2xl font-bold mb-8">Dashboard</h1>
             <nav>
-                <a href="#" class="block p-3 bg-gray-700">Matiere</a>
+                <a href="#" class="block p-3 bg-gray-700 rounded text-white font-medium">Matières</a>
             </nav>
         </aside>
+
+        <!-- Contenu principal -->
         <main class="flex-1 p-8">
-            <div class="flex justify-between mb-8">
-                <h2 class="text-2x1 font-bold mb-8">Gestion Des Matiere</h2>
-                <button id="btnAjouter" class="bg-blue-600 text-white px-5 py-3">+ Ajouter Matiere</button>
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold text-gray-800">Gestion des Matières</h2>
+                <button id="btnAjouter" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-lg shadow font-medium">
+                    + Ajouter Matière
+                </button>
             </div>
-            <div class="p-6 bg-white mb-4 hidden" id="sectionForm">
+
+            <!-- Formulaire d'ajout / modification (masqué par défaut) -->
+            <div class="p-6 bg-white rounded-lg shadow-md mb-6 hidden" id="sectionForm">
+                <h3 class="text-xl font-bold mb-4 text-gray-700" id="formTitle">Ajouter une Matière</h3>
                 <form id="form">
-                    <label class="block mb-2">Nom de Matiere</label>
-                    <input type="text" class="w-full border p-3 mb-4" id="nom_matiere"  name="nom_matiere">
-                    <label class="block mb-2">Description de Matiere</label>
-                    <input type="text" class="w-full border p-3 mb-4" id="description"  name="description">
-                    <button class="bg-blue-600 text-white px-5 py-3">Ajouter</button>
-                    <button class="bg-gray-500 text-white px-5 py-3" id="annulerBtn" type="button">Annuler</button>
+                    <!-- Champ masqué pour l'ID en mode modification -->
+                    <input type="hidden" id="id_matiere" name="id_matiere">
+
+                    <label class="block mb-2 font-medium text-gray-700" for="nom_matiere">Nom de la matière</label>
+                    <input type="text" class="w-full border rounded-lg p-3 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500" id="nom_matiere" name="nom_matiere" required placeholder="Ex : Algorithmique">
+
+                    <label class="block mb-2 font-medium text-gray-700" for="description">Description de la matière</label>
+                    <textarea class="w-full border rounded-lg p-3 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500" id="description" name="description" rows="3" required placeholder="Ex : Concepts de base et algorithmes"></textarea>
+
+                    <div class="flex space-x-3">
+                        <button type="submit" id="btnSubmitForm" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg font-medium">
+                            Enregistrer
+                        </button>
+                        <button type="button" id="annulerBtn" class="bg-gray-500 hover:bg-gray-600 text-white px-5 py-2.5 rounded-lg font-medium">
+                            Annuler
+                        </button>
+                    </div>
                 </form>
             </div>
-            <div>
-                <table class="w-full">
+
+            <!-- Tableau des matières -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <table class="w-full border-collapse">
                     <thead>
-                        <tr class="bg-gray-200">
+                        <tr class="bg-gray-200 text-gray-700 uppercase text-sm leading-normal">
                             <th class="p-4 text-left">ID</th>
                             <th class="p-4 text-left">Nom</th>
-                            <th class="p-4 text-left">Description Matiere</th>
+                            <th class="p-4 text-left">Description</th>
+                            <th class="p-4 text-center">Actions</th>
                         </tr>
                     </thead>
-                    <tbody id="bodyTable">
-
+                    <tbody id="bodyTable" class="text-gray-600 text-sm">
+                        <!-- Rempli dynamiquement par main.js -->
                     </tbody>
                 </table>
             </div>
         </main>
     </div>
+
+    <script src="main.js"></script>
 </body>
-<script src="main.js"></script>
 </html>
