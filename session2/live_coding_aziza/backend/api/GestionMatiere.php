@@ -20,14 +20,6 @@ class GestionMatiere{
          $content=file_get_contents($this->path_file);
         $matiere=json_decode($content,true);
         $data=json_decode(file_get_contents("php://input"),true);
-        if(!is_array($matiere) || !is_array($data) ||
-            !isset($data["nom_matiere"],$data["description"]) ||
-            !is_string($data["nom_matiere"]) || !is_string($data["description"]) ||
-            trim($data["nom_matiere"])==="" || trim($data["description"])===""){
-            http_response_code(400);
-            echo json_encode(["error"=>"Nom et description sont requis."]);
-            return;
-        }
         $matiere[]=[
             "id_matiere"=>count($matiere) ? max(array_column($matiere,"id_matiere"))+1 : 1,
             "nom_matiere"=>$data["nom_matiere"],
