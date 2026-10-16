@@ -21,7 +21,7 @@ class GestionMatiere{
         $matiere=json_decode($content,true);
         $data=json_decode(file_get_contents("php://input"),true);
         $matiere[]=[
-            "id_matiere"=>count($matiere) ? max(array_column($matiere,"id_matiere"))+1 : 1,
+            "id_matiere"=>count($matiere)+1,
             "nom_matiere"=>$data["nom_matiere"],
             "description"=>$data["description"]
         ];
