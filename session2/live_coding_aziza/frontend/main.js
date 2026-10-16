@@ -1,12 +1,11 @@
 const API_URL="http://localhost:8000/backend/api/GestionMatiere.php";
-const tablebody=document.getElementById("tablebody");
-const btnAnnuler =document.getElementById("btnAnnuler");
-const sectionForm =document.getElementById("sectionForm");
+const tablebody= document.getElementById("tablebody");
+const btnAnnuler= document.getElementById("btnAnnuler");
+const sectionForm= document.getElementById("sectionForm");
 const btnAjouter=document.getElementById("btnAjouter");
-const form=document.getElementById("form");
-const id_matiere=document.getElementById("id_matiere");
-const nom_matiere=document.getElementById("nom_matiere");
+const nom_matiere=document.getElementById("cat-nom");
 const description=document.getElementById("description");
+const form =document.getElementById("form");
 function afficherMatiere(){
     fetch(API_URL)
     .then(Response=>Response.json())
@@ -37,13 +36,20 @@ function ajouterMatiere(){
         console.log(data)
         document.getElementById("form")
         tablebody.innerHTML=""
+        form.reset()
         afficherMatiere()
     })
     .catch(error=>console.log(error))
 }
-document.getElementById("form").addEventListener("submit",event=>{
-    event.preventDefault()
+
+form.addEventListener("submit",event=>{
+    event.preventDefault();
     ajouterMatiere()
 })
-document.addEventListener("DOMContentLoaded",()=>afficherMatiere())
-
+btnAjouter.addEventListener("click",()=>{
+    sectionForm.classList.remove("hidden")
+});
+btnAnnuler.addEventListener("click",()=>{
+    sectionForm.classList.add("hidden")
+});
+afficherMatiere()

@@ -17,7 +17,7 @@ class GestionMatiere{
     }
 
      public function ajouterMatiere(){
-         $content=file_get_contents($this->path_file);
+        $content=file_get_contents($this->path_file);
         $matiere=json_decode($content,true);
         $data=json_decode(file_get_contents("php://input"),true);
         $matiere[]=[

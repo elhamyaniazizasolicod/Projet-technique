@@ -1,17 +1,3 @@
 [
-    {
-        "id_matiere": 3,
-        "nom_matiere": "Test",
-        "description": "ddddddddddd"
-    },
-    {
-        "id_matiere": 4,
-        "nom_matiere": "php",
-        "description": "php c'est un logadoizopuio"
-    },
-    {
-        "id_matiere": 3,
-        "nom_matiere": "css",
-        "description": "html"
-    }
+   
 ]
