@@ -1,27 +1,31 @@
 <?php
-class Matiere {
-    private int $id_matiere;
+class Matiere{
+    private int $id;
     private string $nom_matiere;
     private string $description;
-    public function __construct(int $id_matiere=0,string $nom="",string $description=""){
-        $this->id_matiere=$id_matiere;
-        $this->nom_matiere=$nom;
+    
+    public function __construct(int $id,string $nom_matiere="",string $description=""){
+        $this->id=$id;
+        $this->nom_matiere=$nom_matiere;
         $this->description=$description;
-
     }
-    public function getNom(string $value) :string {
-        return $this->nom_matiere=$value;
+    public function getId():int{
+        return $this->id;
     }
-    public function getDescription(string $value) :string{
-        return $this->description=$value;
-
+    public function setId(int $id):void{
+        $this->id=$id;
     }
-    public function setNom(string $value):void{
-        $this->nom_matiere=$value;
+    public function getNom():string {
+        return $this->nom_matiere;
     }
-    public function setDescription(string $value):void{
-        $this->description=$value;
+    public function setNom(string $nom_matiere):void{
+        $this->nom_matiere=$nom_matiere;
     }
-
+    public function getDescription() :string {
+        return $this->description;
+    }
+    public function setDescription(string $description):void{
+        $this->description=$description;
+    }
 }
 ?>
