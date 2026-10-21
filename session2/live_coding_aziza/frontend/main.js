@@ -35,6 +35,7 @@ function ajouterMatiere(){
         console.log(data)
         document.getElementById("form")
         tablebody.innerHTML=""
+        form.reset()
         afficherMatiere()
     })
 }
