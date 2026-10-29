@@ -9,11 +9,13 @@ class GestionMatiere{
      $this->path_file=__DIR__."/../database/gestionMatiere.json";
     }
 
+    //TODO: DILDIOOPÖÖÖIK//
     public function afficherMatiere(){
         $content=file_get_contents($this->path_file);
         $matiere=json_decode($content,true);
         echo json_encode($matiere);
     }
+    //FIXME: AZIZA JCDIOPID µKJLJJ//
     public function ajouterMatiere(){
         $content=file_get_contents($this->path_file);
         $matiere=json_decode($content,true);

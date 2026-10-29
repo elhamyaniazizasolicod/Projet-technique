@@ -20,7 +20,6 @@ function afficherMatiere(){
                 `)
         });
     })
-    .catch(error=>console.log(error))
 }
 function ajouterMatiere(){
     fetch(API_URL,{
