@@ -1,10 +1,8 @@
 const API_URL="http://localhost:8000/backend/api/controllers/controllerMatiere.php";
-const tablebody=document.getElementById("tablebody");
-const sectionForm=document.getElementById("sectionForm");
-const form=document.getElementById("form-categorie");
-const id_matiere=document.getElementById("cat-id");
-const nom_matiere=document.getElementById("nom_matiere");
-const description=document.getElementById("cat-desc");
+const tbody=document.getElementById("table-categories-body")
+const form=document.getElementById("form-categorie")
+const nom=document.getElementById("nom")
+const description=document.getElementById("description")
 const btnshowform=document.getElementById("btn-show-form")
 const formSection=document.getElementById("section-form")
 const btnSubmit=document.getElementById("btn-submit")
@@ -15,11 +13,11 @@ function afficherMatiere(){
 fetch(API_URL)
 .then(response=>response.json())
 .then(matiere=>{
-    tablebody.innerHTML=""
-    .forEach(matiere => {
-        tablebody.innerHTML+=`
+    tbody.innerHTML=""
+    matiere.forEach(matiere => {
+        tbody.innerHTML+=`
         <tr>
-            <td class="p-4 text-sm font-semibold text-gray-500">${matiere.name}</td>
+            <td class="p-4 text-sm font-semibold text-gray-500">${matiere.nom}</td>
             <td class="p-4 text-sm font-semibold text-gray-500">${matiere.description}</td>
         
         </tr>`
@@ -52,11 +50,11 @@ function showToast(message,type="success"){
 form.addEventListener("submit",function(e){
     e.preventDefault();
     const data={
-        nom_matiere:nom_matiere.value,
+        nom:nom.value,
         description:description.value
     }
     spinner.classList.remove("hidden")
-btnTxt.textContent="Enregistrer en cours..."
+    btnTxt.textContent="Enregistrer en cours..."
     btnSubmit.disabled=true
 
     fetch(API_URL,{
@@ -71,7 +69,7 @@ btnTxt.textContent="Enregistrer en cours..."
     .then(()=>{
         showToast("added success","success")
         form.reset()
-        showThematique()
+        afficherMatiere()
     }).catch(error=>{
         showToast(error.message,"error")
     }).finally(()=>{

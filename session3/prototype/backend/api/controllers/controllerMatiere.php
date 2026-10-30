@@ -3,36 +3,36 @@
 
     header("Content-Type: application/json");
 
-    class ControllerMatiere{
+    class controllerMatiere{
         public function afficherMatiere(){
-            $gestionMatiere=new GestionMatiere();
-            $Matieres=$gestionMatiere->afficherMatiere();
-            $Matieres=[];
-            foreach($Matieres as $Matiere){
-                $Matieres[]=[
-                    "id_matiere"=>$Matiere->getId(),
-                    "nom_matiere"=>$Matiere->getNom(),
-                    "description"=>$Matiere->getDescription()
+            $gestionMatiere= new GestionMatiere();
+            $matieres=$gestionMatiere->afficherMatiere();
+            $result=[];
+            foreach($matieres as $matiere){
+                $result[]=[
+                    "id"=>$matiere->getId(),
+                    "nom"=>$matiere->getNom(),
+                    "description"=>$matiere->getDescription()
                 ];
             
             }
-            echo json_encode($Matieres);
+            echo json_encode($result);
         }
 
         public function ajouterMatiere(){
             $jsonData=file_get_contents("php://input");
             $data=json_decode($jsonData,true);
             $gestionMatiere=new GestionMatiere();
-            $Matieres=new MAtiere($data["nom_matiere"],$data["description"]);
-            $gestionMatiere->ajouterMatiere($Matieres);
-            echo json_encode($Matieres);
+            $matiere=new MAtiere(0,$data["nom"],$data["description"]);
+            $gestionMatiere->ajouterMatiere($matiere);
+            echo json_encode($matiere);
 
             
         }
     }
 
     // get o post
-    $controller=new ControllerMatiere();
+    $controller=new controllerMatiere();
     if($_SERVER["REQUEST_METHOD"]=="POST"){
         $controller->ajouterMatiere();
     }else{

@@ -1,70 +1,41 @@
-
 <?php
+require_once __DIR__ . "/Matiere.php";
+class GestionMatiere{
+    public static $dataFile= __DIR__ . "/../database/gestionMatiere.json";
 
-require_once __DIR__ . "/matiere.php";
-
-class GestionMatiere
-{
-    private string $path_file;
-    public function __construct()
-    {
-        $this->path_file = __DIR__ . "/../database/gestionMatiere.json";
+    public function afficherMatiere(){
+        $jsonData=file_get_contents(self::$dataFile);
+        $data=json_decode($jsonData,true);
+        $matieres=[];
+        foreach($data as $index=>$item){
+           $nom=$item["nom"] ?? $item["name"] ?? null;
+           if(!is_string($nom)){
+               throw new UnexpectedValueException("Missing subject name in JSON record " . ($index + 1));
+           }
+           $matiere=new MAtiere($item["id"],$nom,$item["description"]);
+           $matieres[]=$matiere;
+        }
+           return $matieres;
     }
 
-    // Afficher les matières
-    public function afficherMatiere()
-    {
-        $content = file_get_contents($this->path_file);
-        $matieres = json_decode($content, true);
+    public function ajouterMatiere(MAtiere $matiere){
+          $jsonData=file_get_contents(self::$dataFile);
+            $data=json_decode($jsonData,true);
+            $id=count($data)+1;
+            $data[]=[
+                "id"=>$id,
+                "nom"=>$matiere->getNom(),
+                "description"=>$matiere->getDescription()
 
-        if (!is_array($matieres)) {
-            return [];
-        }
-
-        $resultat = [];
-
-        foreach ($matieres as $data) {
-           $matiere = new Matiere(
-           (int) ($data["id_matiere"] ?? $data["id"] ?? 0),
-           $data["nom_matiere"] ?? $data["nom"] ?? "",
-           $data["description"] ?? ""
-          );
-
-            if (isset($data["id_matiere"])) {
-                $matiere->setId($data["id_matiere"]);
-            } elseif (isset($data["id"])) {
-                $matiere->setId($data["id"]);
-            }
-
-            $resultat[] = $matiere;
-        }
-
-        return $resultat;
+            ];
+            $jsonData=json_encode($data,JSON_PRETTY_PRINT);
+            file_put_contents(self::$dataFile,$jsonData);
+            
+            
     }
 
-    // Ajouter une matière
-    public function ajouterMatiere(Matiere $matiere)
-    {
-        $content = file_get_contents($this->path_file);
-        $matieres = json_decode($content, true);
-
-        if (!is_array($matieres)) {
-            $matieres = [];
-        }
-
-        $nouvelleMatiere = [
-            "id_matiere" => count($matieres) + 1,
-            "nom_matiere" => $matiere->getNom(),
-            "description" => $matiere->getDescription()
-        ];
-
-        $matieres[] = $nouvelleMatiere;
-
-        file_put_contents(
-            $this->path_file,
-            json_encode($matieres, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
-        );
-
-        return $nouvelleMatiere;
-    }
 }
+
+
+
+?>
