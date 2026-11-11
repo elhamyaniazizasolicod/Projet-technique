@@ -9,7 +9,7 @@ const btnSubmit=document.getElementById("btn-submit")
 const btnTxt=document.getElementById("btn-text")
 const spinner=document.getElementById("spinner")
 
-function afficherMatiere(){
+function AfficherMatiere(){
 fetch(API_URL)
 .then(response=>{
     if(!response.ok){
@@ -83,7 +83,7 @@ form.addEventListener("submit",function(e){
     .then(()=>{
         showToast("added success","success")
         form.reset()
-        afficherMatiere()
+        AfficherMatiere()
     }).catch(error=>{
         showToast(error.message,"error")
     }).finally(()=>{
@@ -99,4 +99,4 @@ btnshowform.addEventListener("click",function(){
     btnSubmit.disabled=false
 
 })
-document.addEventListener("DOMContentLoaded",afficherMatiere())
+document.addEventListener("DOMContentLoaded",AfficherMatiere())

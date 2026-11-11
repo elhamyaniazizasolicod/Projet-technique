@@ -1,35 +1,39 @@
 <?php
-require_once __DIR__ . '/../dao/MatiereDAO.php';
+require_once __DIR__ . '/../DAO/MatiereDAO.php';
+require_once __DIR__ . '/BaseService.php';
 
-class MatiereService
-{
+class MatiereService{
     private MatiereDAO $matiereDAO;
 
-    public function __construct(?MatiereDAO $matiereDAO = null)
-    {
-        $this->matiereDAO = $matiereDAO ?? new MatiereDAO();
+    public function __construct(){
+        $this->matiereDAO = new MatiereDAO();
     }
 
-    /**
-     * @return Matiere[]
-     */
-    public function listerMatieres(): array
-    {
-        return $this->matiereDAO->findAll();
+    public function AfficherMatiere(){
+       $matieres=$this->matiereDAO->AfficherMatiere();
+       $data=[];
+       foreach($matieres as $matiere){
+        $data[]=[
+            "id"=>$matiere->getId(),
+            "nom"=>$matiere->getNom(),
+            "description"=>$matiere->getDescription(),
+        ];
+       }
+       return $data;
     }
 
-    public function ajouterMatiere(string $nom, string $description): Matiere
-    {
-        $nom = trim($nom);
-        $description = trim($description);
-
-        if ($nom === '') {
-            throw new InvalidArgumentException('Le nom de la matière est obligatoire.');
+    public function ajouterMatiere(){
+            $input=json_decode(file_get_contents("php://input"),true);
+            try{
+                http_response_code(200);
+                $this->matiereDAO->ajouterMatiere($input["nom"],$input["description"]);
+                return ["success"=>true,"message"=>"Matiere est bien ajoute"];
+            }catch(Error $e){
+                http_response_code(500);
+                return ["success"=>false,"message"=>$e->getMessage()];
+            }
         }
-        if ($description === '') {
-            throw new InvalidArgumentException('La description de la matière est obligatoire.');
-        }
 
-        return $this->matiereDAO->save(new Matiere(0, $nom, $description));
-    }
+
 }
+?>
