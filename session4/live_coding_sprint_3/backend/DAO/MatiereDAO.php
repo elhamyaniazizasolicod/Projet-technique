@@ -13,7 +13,7 @@ class MatiereDAO{
            if(!is_string($nom)){
                throw new UnexpectedValueException("Missing subject name in JSON record " . ($index + 1));
            }
-           $matiere=new MAtiere($item["id"],$nom,$item["description"]);
+           $matiere=new Matiere($item["id"],$nom,$item["description"]);
            $matieres[]=$matiere;
         }
            return $matieres;
@@ -21,18 +21,18 @@ class MatiereDAO{
 
     public function ajouterMatiere($nom,$description){
             $data=[];
-            $genres=$this->AfficherMatiere();
-            $id=count($genres)+1;
+            $matieres=$this->AfficherMatiere();
+            $id=count($matieres)+1;
             if(trim($nom)=="" || trim($description)==""){
                 throw new Error("tout les champs sont obligatoire");
             }
             else{
-                $genres[]=new Matiere($id,$nom,$description);
-                foreach ($genres as $genre){
+                $matieres[]=new Matiere($id,$nom,$description);
+                foreach ($matieres as $matiere){
                     $data[]=[
-                        "id"=>$genre->getId(),
-                        "nom"=>$genre->getNom(),
-                        "description"=>$genre->getDescription(),
+                        "id"=>$matiere->getId(),
+                        "nom"=>$matiere->getNom(),
+                        "description"=>$matiere->getDescription(),
                     ];
                 }
 
