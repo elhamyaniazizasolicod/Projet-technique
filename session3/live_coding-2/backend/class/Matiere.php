@@ -8,6 +8,7 @@ class Matiere{
         $this->nom=$nom;
         $this->description=$description;
     } 
+    
     public function getId() : int {
         return $this->id;
     }

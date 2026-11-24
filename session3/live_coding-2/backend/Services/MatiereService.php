@@ -13,6 +13,7 @@ class MatiereService{
     $getionMatiere->ajouterMatiere($matiere);
     echo json_encode($matiere);
  }
+ 
  public function afficherMatiere(){
     try{
         http_response_code(200);

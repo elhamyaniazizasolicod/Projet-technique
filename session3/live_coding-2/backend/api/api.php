@@ -8,5 +8,6 @@ require_once __DIR__ ."/../Services/MatiereService.php";
  if($_SERVER['REQUEST_METHOD']=="GIT"){
    $Service->afficherMatiere();
  }
+ 
 
 ?>

@@ -28,6 +28,7 @@ class MatiereDAO{
     $id=count($data)+1;
     $data[]=[
         "id"=>$id,
+      
         "nom"=>$matiere->getNom(),
         "description"=>$matiere->getDescription()
     ];
