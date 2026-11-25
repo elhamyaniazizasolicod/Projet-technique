@@ -1,8 +1,8 @@
 <?php
 
-require_once __DIR__ . '/DomaineDAO.php';
+require_once __DIR__ . '/MatiereDAO.php';
 
-class Domaine extends DomaineDAO
+class Matiere extends MatiereDAO
 {
     private ?int $id_matiere;
     private string $nom_matiere;

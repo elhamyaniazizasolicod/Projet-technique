@@ -1,14 +1,13 @@
 <?php
+require_once dirname(__DIR__) . '/services/MatiereService.php';
 
-require_once dirname(__DIR__) . '/services/DomaineService.php';
-
-class DomaineController
+class MatiereController
 {
-    private DomaineService $service;
+    private MatiereService $service;
 
     public function __construct()
     {
-        $this->service = new DomaineService();
+        $this->service = new MatiereService();
     }
 
     public function handleRequest(): void
@@ -17,13 +16,13 @@ class DomaineController
 
         try {
             if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-                echo json_encode($this->service->listerDomaines());
+                echo json_encode($this->service->listerMatieres());
                 return;
             }
 
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $input = json_decode(file_get_contents('php://input'), true) ?? [];
-                echo json_encode($this->service->ajouterDomaine($input));
+                echo json_encode($this->service->ajouter($input));
                 return;
             }
 

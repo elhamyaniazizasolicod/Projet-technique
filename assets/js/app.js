@@ -1,8 +1,8 @@
-const form=document.getElementById("form-domaine")
+const form=document.getElementById("form-matiere")
 const sectionForm=document.getElementById("section-form")
 const btnAjouter=document.getElementById("btn-show-form")
 const btnAnnuler=document.getElementById("btn-cancel-form")
-const tbody=document.getElementById("table-domaines-body")
+const tbody=document.getElementById("table-matiere-body")
 const btnEnregister=document.getElementById("enregister")
 const api="http://localhost:8000/backend/api/api.php"
 
@@ -37,13 +37,13 @@ function Toast(message,type="success"){
     },3000)
 }
 
-async function AfficherDomaines(){
+async function AfficherMatieres(){
     try {
         const response = await fetch(api)
         const data = await response.json()
 
         if (!response.ok) {
-            throw new Error(data.message || "Impossible de charger les domaines")
+            throw new Error(data.message || "Impossible de charger les matieres")
         }
 
         tbody.innerHTML=""
@@ -68,7 +68,7 @@ async function AfficherDomaines(){
 
 
 document.addEventListener("DOMContentLoaded",()=>{
-    AfficherDomaines()
+    AfficherMatieres()
     form.addEventListener("submit",(e)=>{
         e.preventDefault()
         Loading(true)
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded",()=>{
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify({
-                nom_matiere:document.getElementById("nom").value,
+                nom_matiere:document.getElementById("nom_matiere").value,
                 description:document.getElementById("description").value
             })
         }).then(async response=>{
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded",()=>{
             Toast(data.message)
             form.reset()
             sectionForm.classList.add("hidden")
-            AfficherDomaines()
+            AfficherMatieres()
         }).catch(error=>{
             Loading(false)
             Toast(error.message,"failed")

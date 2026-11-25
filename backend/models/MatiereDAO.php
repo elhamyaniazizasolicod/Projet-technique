@@ -2,7 +2,7 @@
 
 require_once dirname(__DIR__) . '/config/Database.php';
 
-class DomaineDAO
+class MatiereDAO
 {
     protected ?PDO $db = null;
 

@@ -8,6 +8,8 @@ CREATE TABLE IF NOT EXISTS matiere (
 );
 
 INSERT INTO matiere (nom_matiere, description) VALUES
-('Informatique', 'Développement, réseaux et systèmes'),
-('Finance', 'Comptabilité et gestion financière'),
-('Marketing', 'Communication et stratégie digitale');
+('PHP', 'Programmation côté serveur avec PHP'),
+('JavaScript', 'Développement web avec JavaScript'),
+('HTML & CSS', 'Création et mise en forme des pages web'),
+('MySQL', 'Gestion et manipulation des bases de données'),
+('Git & GitHub', 'Gestion des versions et collaboration');

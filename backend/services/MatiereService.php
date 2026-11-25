@@ -1,24 +1,24 @@
 <?php
 
 require_once dirname(__DIR__) . '/services/BaseService.php';
-require_once dirname(__DIR__) . '/models/Domaine.php';
+require_once dirname(__DIR__) . '/models/Matiere.php';
 
-class DomaineService extends BaseService 
+class MatiereService extends BaseService 
 {
     // instead $domaine name it $model 
-    private Domaine $domaine;
+    private Matiere $matiere;
 
     public function __construct()
     {
-        $this->domaine = new Domaine();
+        $this->matiere = new Matiere();
     }
 
-    public function listerDomaines(): array
+    public function listerMatieres(): array
     {
-        return $this->domaine->afficherTous();
+        return $this->matiere->afficherTous();
     }
 
-    public function ajouterDomaine(array $input): array
+    public function ajouter(array $input): array
     {
         $nom_matiere = trim($input['nom_matiere'] ?? '');
         $description = trim($input['description'] ?? '');
@@ -29,7 +29,7 @@ class DomaineService extends BaseService
 
         $this->validateNomLength($nom_matiere);
 
-        $this->domaine->ajouter($nom_matiere, $description);
+        $this->matiere->ajouter($nom_matiere, $description);
 
         return [
             'success' => true,
